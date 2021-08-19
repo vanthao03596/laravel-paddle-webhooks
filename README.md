@@ -240,7 +240,7 @@ class MyCustomPaddleWebhookJob extends ProcessPaddleWebhookJob
 
 You may use your own logic to determine if a request should be processed or not. You can do this by specifying your own profile in the `profile` key of the `paddle-webhooks` config file. The class should implement `Spatie\WebhookClient\WebhookProfile\WebhookProfile`.
 
-Paddle might occasionally send a webhook request [more than once](https://Paddle.com/docs/webhooks/best-practices#duplicate-events). In this example we will make sure to only process a request if it wasn't processed before.
+Paddle might occasionally send a webhook request ***more than once***. In this example we will make sure to only process a request if it wasn't processed before.
 
 ```php
 use Illuminate\Http\Request;
