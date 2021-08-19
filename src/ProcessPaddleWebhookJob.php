@@ -11,7 +11,7 @@ class ProcessPaddleWebhookJob extends ProcessWebhookJob
     {
         $eventName = $this->webhookCall->payload['alert_name'] ?? null;
 
-        if (!$eventName) {
+        if (! $eventName) {
             $eventName = 'fulfillment';
         }
 
