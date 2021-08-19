@@ -3,8 +3,8 @@
 namespace Vanthao03596\PaddleWebhooks\Tests;
 
 use Illuminate\Support\Facades\Event;
-use Vanthao03596\PaddleWebhooks\ProcessPaddleWebhookJob;
 use Spatie\WebhookClient\Models\WebhookCall;
+use Vanthao03596\PaddleWebhooks\ProcessPaddleWebhookJob;
 
 class PaddleWebhookCallTest extends TestCase
 {
@@ -28,7 +28,6 @@ class PaddleWebhookCallTest extends TestCase
         ]);
 
         $this->processPaddleWebhookJob = new ProcessPaddleWebhookJob($this->webhookCall);
-
     }
 
     /** @test */

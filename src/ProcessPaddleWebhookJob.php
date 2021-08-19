@@ -2,8 +2,8 @@
 
 namespace Vanthao03596\PaddleWebhooks;
 
-use Vanthao03596\PaddleWebhooks\Exceptions\WebhookFailed;
 use Spatie\WebhookClient\ProcessWebhookJob;
+use Vanthao03596\PaddleWebhooks\Exceptions\WebhookFailed;
 
 class ProcessPaddleWebhookJob extends ProcessWebhookJob
 {

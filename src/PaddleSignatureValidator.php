@@ -8,7 +8,7 @@ use Spatie\WebhookClient\WebhookConfig;
 
 class PaddleSignatureValidator implements SignatureValidator
 {
-    const SIGNATURE_KEY = 'p_signature';
+    public const SIGNATURE_KEY = 'p_signature';
 
     public function isValid(Request $request, WebhookConfig $config): bool
     {
