@@ -9,7 +9,7 @@
 
 This package will not handle what should be done after the webhook request has been validated and the right job or event is called. You should still code up any work (eg. regarding payments) yourself.
 
-Before using this package we highly recommend reading [the entire documentation on webhooks over at Paddle](https://developer.paddle.com/webhook-reference/intro).
+Highly recommend reading [the entire documentation on webhooks over at Paddle](https://developer.paddle.com/webhook-reference/intro) before use this package.
 
 ## Installation
 
@@ -143,7 +143,7 @@ class HandleChargeableSource implements ShouldQueue
 }
 ```
 
-We highly recommend that you make this job queueable, because this will minimize the response time of the webhook requests. This allows you to handle more Paddle webhook requests and avoid timeouts.
+Highly recommend that you make this job queueable, because this will minimize the response time of the webhook requests. This allows you to handle more Paddle webhook requests and avoid timeouts.
 
 After having created your job you must register it at the `jobs` array in the `paddle-webhooks.php` config file. The key should be the name of [the Paddle event type](https://developer.paddle.com/webhook-reference/intro) where, only [Fulfillment Webhook](https://developer.paddle.com/webhook-reference/product-fulfillment/fulfillment-webhook) will return ***fulfillment***
 
@@ -197,7 +197,7 @@ class ChargeSource implements ShouldQueue
 }
 ```
 
-We highly recommend that you make the event listener queueable, as this will minimize the response time of the webhook requests. This allows you to handle more Paddle webhook requests and avoid timeouts.
+Highly recommend that you make the event listener queueable, as this will minimize the response time of the webhook requests. This allows you to handle more Paddle webhook requests and avoid timeouts.
 
 The above example is only one way to handle events in Laravel. To learn the other options, read [the Laravel documentation on handling events](https://laravel.com/docs/5.5/events).
 
