@@ -18,7 +18,7 @@
     "require": {
         "php": "^7.4 || ^8.0",
         "ext-openssl": "*",
-        "illuminate/support": "^^7.0|^8.0",
+        "illuminate/support": "^7.0|^8.0",
         "spatie/laravel-webhook-client": "^2.7.4"
     },
     "require-dev": {
