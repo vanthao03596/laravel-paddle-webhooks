@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+namespace Vanthao03596\PaddleWebhooks\Tests;
 
 class ExampleTest extends TestCase
 {
