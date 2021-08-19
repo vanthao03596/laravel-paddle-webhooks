@@ -9,13 +9,15 @@ class ProcessPaddleWebhookJob extends ProcessWebhookJob
 {
     public function handle()
     {
-        if (! isset($this->webhookCall->payload['alert_name']) || $this->webhookCall->payload['alert_name'] === '') {
-            throw WebhookFailed::missingType($this->webhookCall);
+        $eventName = $this->webhookCall->payload['alert_name'] ?? null;
+
+        if (!$eventName) {
+            $eventName = 'fulfillment';
         }
 
-        event("paddle-webhooks::{$this->webhookCall->payload['alert_name']}", $this->webhookCall);
+        event("paddle-webhooks::{$eventName}", $this->webhookCall);
 
-        $jobClass = $this->determineJobClass($this->webhookCall->payload['alert_name']);
+        $jobClass = $this->determineJobClass($eventName);
 
         if ($jobClass === '') {
             return;

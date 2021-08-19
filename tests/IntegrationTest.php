@@ -165,9 +165,11 @@ class IntegrationTest extends TestCase
     }
 
     /** @test */
-    public function a_request_with_an_invalid_payload_will_be_logged_but_events_and_jobs_will_not_be_dispatched()
+    public function a_request_without_alert_name_will_dispatch_fulfillment_event()
     {
-        $payload = ['invalid_payload'];
+        config(['paddle-webhooks.jobs' => ['fulfillment' => DummyJob::class]]);
+
+        $payload = ['payload'];
 
         $privateKey = static::generatePrivateKey();
         $keyDetails = openssl_pkey_get_details($privateKey);
@@ -180,20 +182,23 @@ class IntegrationTest extends TestCase
 
         $this
             ->postJson('paddle-webhooks', $payload)
-            ->assertStatus(400);
+            ->assertSuccessful();
 
         $this->assertCount(1, WebhookCall::get());
 
         $webhookCall = WebhookCall::first();
 
-        $this->assertFalse(isset($webhookCall->payload['alert_name']));
         $this->assertEquals($payload, $webhookCall->payload);
+        $this->assertNull($webhookCall->exception);
 
-        $this->assertEquals('Webhook call id `1` did not contain a type. Valid Paddle webhook calls should always contain a type.', $webhookCall->exception['message']);
+        Event::assertDispatched('paddle-webhooks::fulfillment', function ($event, $eventPayload) use ($webhookCall) {
+            $this->assertInstanceOf(WebhookCall::class, $eventPayload);
+            $this->assertEquals($webhookCall->id, $eventPayload->id);
 
-        Event::assertNotDispatched('paddle-webhooks::my_type');
+            return true;
+        });
 
-        $this->assertNull(cache('dummyjob'));
+        $this->assertEquals($webhookCall->id, cache('dummyjob')->id);
     }
 
     /** @test * */
