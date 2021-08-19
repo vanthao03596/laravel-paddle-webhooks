@@ -2,7 +2,7 @@
 
 return [
     /*
-     * Paddle will sign each webhook using a secret. You can find the used secret at the
+     * Paddle will sign each webhook using a public key to create signature . You can find the used public key at the
      * webhook configuration settings: https://vendors.paddle.com/public-key.
      */
     'signing_secret' => env('PADDLE_PUBLIC_KEY'),
