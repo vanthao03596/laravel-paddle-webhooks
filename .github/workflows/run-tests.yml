@@ -19,7 +19,7 @@ jobs:
         include:
           - laravel: 8.*
             testbench: 6.*
-          - laravel: ^7.29
+          - laravel: "^7.29"
             testbench: 5.*
           - laravel: 6.*
             testbench: 4.*
