@@ -11,6 +11,7 @@ class TestCase extends Orchestra
     {
         parent::setUp();
 
+        $this->setUpDatabase();
     }
 
     protected function getPackageProviders($app)
@@ -22,11 +23,18 @@ class TestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
-        config()->set('database.default', 'testing');
+        config()->set('database.default', 'sqlite');
+        config()->set('database.connections.sqlite', [
+            'driver' => 'sqlite',
+            'database' => ':memory:',
+            'prefix' => '',
+        ]);
+    }
 
-        /*
-        include_once __DIR__.'/../database/migrations/create_laravel-paddle-webhooks_table.php.stub';
-        (new \CreatePackageTable())->up();
-        */
+    protected function setUpDatabase()
+    {
+        include_once __DIR__.'/../vendor/spatie/laravel-webhook-client/database/migrations/create_webhook_calls_table.php.stub';
+
+        (new \CreateWebhookCallsTable())->up();
     }
 }
