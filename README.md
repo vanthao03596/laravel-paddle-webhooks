@@ -258,7 +258,7 @@ class PaddleWebhookProfile implements WebhookProfile
 
 ### Handling multiple signing secrets
 
-Yu might want to the package to handle multiple endpoints and secrets. Here's how to configurate that behaviour.
+You might want to the package to handle multiple endpoints and secrets. Here's how to configurate that behaviour.
 
 If you are using the `Route::paddleWebhooks` macro, you can append the `configKey` as follows:
 
