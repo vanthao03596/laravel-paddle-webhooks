@@ -19,7 +19,7 @@
         "php": "^7.3 || ^8.0",
         "ext-openssl": "*",
         "illuminate/support": "^6.0|^7.0|^8.0",
-        "spatie/laravel-webhook-client": "^2.7.4"
+        "spatie/laravel-webhook-client": "^2.7.5"
     },
     "require-dev": {
         "nunomaduro/collision": "^3.0|^5.3",
